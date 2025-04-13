@@ -1,0 +1,67 @@
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Ricochet</h1>
+    <p>Kilőtt lőszerek felhasználásával készült Swarovski berakásos ékszerek és kiegészítők hazánk lőtereiről egyenesen a Te kezedbe!</p>
+    <button mat-raised-button color="accent" routerLink="/cart">Vásárlás megkezdése</button>
+  </div>
+</section>
+
+
+
+<!-- Termék Grid
+<section class="product-section container">
+  <div class="product-grid">
+    <mat-card *ngFor="let jewelry of filteredJewelries" class="product-card" (click)="openProductDetails(jewelry)" [@fadeInSlide]>
+      <img mat-card-image [src]="jewelry.imageUrl" alt="{{ jewelry.name }}">
+      <mat-card-content>
+        <h3>{{ jewelry.name }}</h3>
+        <p>{{ jewelry.description }}</p>
+        <p class="price">Ár: {{ jewelry.price | priceFormat:'€' }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="addToCart(jewelry, $event)">Kosárba</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+-->
+
+<!-- Ajánló blokkok -->
+<section class="recommendation-section container">
+  <h2>Karkötő ajánlatok</h2>
+  <div class="product-grid">
+    <mat-card *ngFor="let jewelry of bracelets" class="product-card" (click)="openProductDetails(jewelry)" [@fadeInSlide]>
+      <img mat-card-image [src]="jewelry.imageUrl" alt="{{ jewelry.name }}">
+      <mat-card-content>
+        <h3>{{ jewelry.name }}</h3>
+        <p>{{ jewelry.description }}</p>
+        <p class="price">Ár: {{ jewelry.price | priceFormat:'Ft' }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="addToCart(jewelry, $event)">Kosárba</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <button mat-stroked-button color="primary" routerLink="/store">Tovább a webáruházba</button>
+</section>
+
+
+<section class="recommendation-section container">
+  <h2>6000 Ft alatti ajánlatok</h2>
+  <div class="product-grid">
+    <mat-card *ngFor="let jewelry of under1000" class="product-card" (click)="openProductDetails(jewelry)" [@fadeInSlide]>
+      <img mat-card-image [src]="jewelry.imageUrl" alt="{{ jewelry.name }}">
+      <mat-card-content>
+        <h3>{{ jewelry.name }}</h3>
+        <p>{{ jewelry.description }}</p>
+        <p class="price">Ár: {{ jewelry.price | priceFormat:'€' }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent" (click)="addToCart(jewelry, $event)">Kosárba</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <button mat-stroked-button color="primary" routerLink="/store">Tovább a webáruházba</button>
+</section>
+

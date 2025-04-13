@@ -1,0 +1,65 @@
+<mat-horizontal-stepper linear>
+  <mat-step [stepControl]="personalForm">
+    <form [formGroup]="personalForm">
+      <ng-template matStepLabel>Személyes adatok</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Teljes Név</mat-label>
+        <input matInput formControlName="fullName" placeholder="Add meg a neved">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Példa: user@example.com">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext [disabled]="personalForm.invalid">Tovább</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="shippingForm">
+    <form [formGroup]="shippingForm">
+      <ng-template matStepLabel>Szállítás</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Cím</mat-label>
+        <input matInput formControlName="address" placeholder="Utca, házszám">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Város</mat-label>
+        <input matInput formControlName="city" placeholder="Város">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Irányítószám</mat-label>
+        <input matInput formControlName="postalCode" placeholder="Irányítószám">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-button matStepperNext [disabled]="shippingForm.invalid">Tovább</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="paymentForm">
+    <form [formGroup]="paymentForm">
+      <ng-template matStepLabel>Fizetés</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Bankkártya szám</mat-label>
+        <input matInput formControlName="cardNumber" placeholder="16 jegyű kártyaszám">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Lejárati dátum</mat-label>
+        <input matInput formControlName="expiryDate" placeholder="MM/YY">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>CVV</mat-label>
+        <input matInput formControlName="cvv" placeholder="CVV">
+      </mat-form-field>
+      <div style="margin: 16px 0;">
+        <strong>Végösszeg: {{ cartService.getTotalPrice() | priceFormat:'€' }}</strong>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-raised-button color="primary" (click)="submitOrder()" [disabled]="paymentForm.invalid">Rendelés leadása</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="mobile-sidenav" class="mobile-only">
+    <div class="mobile-nav">
+      <a routerLink="/" (click)="sidenav.close()">Kezdőlap</a>
+      <a routerLink="/webshop" (click)="sidenav.close()">Webáruház</a>
+      <a routerLink="/about" (click)="sidenav.close()">Rólunk</a>
+      <a routerLink="/contact" (click)="sidenav.close()">Kapcsolat</a>
+      <a routerLink="/cart" (click)="sidenav.close()">Kosár</a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="navbar">
+      <div class="brand-container">Ricochet</div>
+
+      <div class="spacer"></div>
+
+      <div class="nav-links desktop-only">
+        <a routerLink="/">Kezdőlap</a>
+        <a routerLink="/store">Webáruház</a>
+        <a routerLink="/about">Rólunk</a>
+        <a routerLink="/contact">Kapcsolat</a>
+        <a routerLink="/cart" class="cart-link">
+          <mat-icon matBadge="{{ cartCount }}" matBadgeColor="accent">shopping_cart</mat-icon>
+        </a>
+      </div>
+
+      <button mat-icon-button (click)="sidenav.toggle()" class="mobile-only">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

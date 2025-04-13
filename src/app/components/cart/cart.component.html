@@ -1,0 +1,31 @@
+<div class="container">
+  <mat-card *ngIf="cartService.cartItems.length > 0; else emptyCart">
+    <mat-card-title>Kosár tartalma</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let item of cartService.cartItems" class="cart-item">
+
+        <div class="item-details">
+          <h3>{{ item.jewelry.name }}</h3>
+          <p>Ár: <span>{{ item.jewelry.price | priceFormat:'€' }}</span></p>
+        </div>
+        <div class="quantity-controls">
+          <input type="number" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item.jewelry.id, $event)">
+          <button mat-icon-button (click)="removeItem(item.jewelry.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="total-price">
+        <strong>Végösszeg: {{ cartService.getTotalPrice() | priceFormat:'€' }}</strong>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="button-group">
+      <button mat-button class="continue-btn" routerLink="/">Vissza a vásárláshoz</button>
+      <button mat-raised-button class="checkout-btn" routerLink="/checkout">Pénztár</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <ng-template #emptyCart>
+    <p class="empty-msg">A kosár jelenleg üres.</p>
+  </ng-template>
+</div>
